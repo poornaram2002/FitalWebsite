@@ -1,0 +1,24 @@
+// JavaScript code for generating personalized recommendations
+document.addEventListener('DOMContentLoaded', function () {
+    const recommendationSection = document.getElementById('recommendation-section');
+
+    // Example BMI value (you'll get this from your calculator)
+    const bmiValue = 25;
+
+    const recommendations = generateRecommendation(bmiValue);
+    recommendationSection.innerHTML = recommendations;
+});
+
+function generateRecommendation(bmiValue) {
+    let recommendations = '';
+
+    if (bmiValue < 18.5) {
+        recommendations = 'You are underweight. Consider increasing your calorie intake and focusing on muscle-building exercises.';
+    } else if (bmiValue >= 18.5 && bmiValue < 25) {
+        recommendations = 'You are within a healthy weight range. Keep up the good work!';
+    } else {
+        recommendations = 'You are overweight. Consider reducing your calorie intake and incorporating regular cardiovascular exercises.';
+    }
+
+    return recommendations;
+}
