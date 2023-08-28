@@ -1,0 +1,50 @@
+document.addEventListener('DOMContentLoaded', function () {
+    // Code that runs after the page has loaded
+    // You can add event listeners and other interactions here
+
+    // Example: Adding a click event listener to a button
+    const ctaButton = document.querySelector('.cta-button');
+    ctaButton.addEventListener('click', function () {
+        alert('Button clicked!');
+    });
+
+    // Example: BMI Calculator logic
+    const bmiCalculatorForm = document.getElementById('bmi-calculator-form');
+    bmiCalculatorForm.addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the form from submitting
+
+        const weight = parseFloat(document.getElementById('weight').value);
+        const height = parseFloat(document.getElementById('height').value);
+
+        const bmi = calculateBMI(weight, height);
+        const bmiResult = document.getElementById('bmi-result');
+        bmiResult.textContent = `Your BMI: ${bmi.toFixed(2)}`;
+    });
+
+    // Example: Recommendation generator logic
+    const bmiValue = 25; // Assume the calculated BMI value
+    const recommendations = generateRecommendation(bmiValue);
+    const recommendationSection = document.getElementById('recommendation-section');
+    recommendationSection.innerHTML = recommendations;
+});
+
+// Example BMI calculator logic
+function calculateBMI(weight, height) {
+    const bmi = weight / (height * height);
+    return bmi;
+}
+
+// Example recommendation generator
+function generateRecommendation(bmiValue) {
+    let recommendations = '';
+
+    if (bmiValue < 18.5) {
+        recommendations = 'You are underweight. Consider increasing your calorie intake and focusing on muscle-building exercises.';
+    } else if (bmiValue >= 18.5 && bmiValue < 25) {
+        recommendations = 'You are within a healthy weight range. Keep up the good work!';
+    } else {
+        recommendations = 'You are overweight. Consider reducing your calorie intake and incorporating regular cardiovascular exercises.';
+    }
+
+    return recommendations;
+}
