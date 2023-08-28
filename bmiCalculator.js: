@@ -1,0 +1,20 @@
+// JavaScript code for BMI calculator logic
+document.addEventListener('DOMContentLoaded', function () {
+    const calculatorForm = document.getElementById('bmi-calculator-form');
+    calculatorForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const weight = parseFloat(document.getElementById('weight').value);
+        const height = parseFloat(document.getElementById('height').value);
+
+        const bmi = calculateBMI(weight, height);
+        const bmiResult = document.getElementById('bmi-result');
+        bmiResult.textContent = `Your BMI: ${bmi.toFixed(2)}`;
+    });
+
+    function calculateBMI(weight, height) {
+        // BMI calculation logic
+        const bmi = weight / (height * height);
+        return bmi;
+    }
+});
